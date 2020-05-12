@@ -31,16 +31,42 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
+    <!--drag and drop-->
     <script src="vendor/dropzone-5.7.0/dist/dropzone.js"></script>
     <link href="vendor/dropzone-5.7.0/dist/dropzone.css" rel="stylesheet" media="all">
+
+    <!--PopUp Modal : Sweet Modal-->
+    <link rel="stylesheet" href="vendor/Sweet-Modal/dev/jquery.sweet-modal.css" />
+    <script src="vendor/Sweet-Modal/min/jquery.sweet-modal.min.js"></script>
 
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
             $('#example1').DataTable();
+
+            $(".edits").click(function(){
+                    $.sweetModal.prompt('Update the Test Case name', 'Can I?', 'Test Case Name', function(val) {
+                    $.sweetModal('You typed: ' + val);
+                });
+            });
+
+            $(".dels").click(function(){
+                $.sweetModal.confirm('Titled Confirm', 'Are you sure you want to delete?', function() {
+                    $.sweetModal('Test Case is Deleted!');
+                }, function() {
+                    $.sweetModal('Test Case is not Deleted');
+                });
+            });
+
+            $(".req").click(function(){
+                $.sweetModal('This is an alert.');
+            });
+           
+            
+            
         } );
 
-        
+       
     </script>
     <link href="css/theme.css" rel="stylesheet" media="all">
 </head>
@@ -52,7 +78,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images/kissclipart-lighthouse-clipart-clip-art-2813399f31ffb59b.jpg" style="height: 50px; width: 50px;" alt="Cool Admin" /> <img height="100px" width="170px" src="images/a-removebg.jpg">
+                    <img src="images/a8cad0ae-56c9-42a0-ae62-e7d25042b6d9_200x200.png" style="height: 150px; width: 200px;" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -60,11 +86,11 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-tachometer-alt"></i><strong>Dashboard</strong></a>
                         </li>
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-question"></i>FAQ</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-question"></i>&nbsp;<strong>FAQ</strong></a>
                         </li>
                     </ul>
                 </nav>
@@ -156,26 +182,24 @@
                     <div class="container-fluid">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4>Application Manipulation Criteria</h4>
-                                </div>
+                                
                                 <div class="card-body">
                                     <div class="custom-tab">
 
                                         <nav>
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                 <a class="nav-item nav-link active" id="custom-nav-home-tab" data-toggle="tab" href="#custom-nav-home" role="tab" aria-controls="custom-nav-home"
-                                                 aria-selected="true">Application</a>
+                                                 aria-selected="true"><strong>Application</strong></a>
                                                 <a class="nav-item nav-link" id="custom-nav-profile-tab" data-toggle="tab" href="#custom-nav-profile" role="tab" aria-controls="custom-nav-profile"
-                                                 aria-selected="false">Test Cases</a>
+                                                 aria-selected="false"><strong>Test Cases</strong></a>
                                             </div>
                                         </nav>
                                         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="custom-nav-home" role="tabpanel" aria-labelledby="custom-nav-home-tab">
                                                 <div class="col-lg-12">
                                                     <div class="card">
-                                                        <div class="card-header">
-                                                            <strong>Application Request</strong> Form
+                                                        <div class="card-header bg-primary">
+                                                            <strong class="card-title text-light">Application Request Form</strong>
                                                         </div>
                                                         <div class="card-body card-block">
                                                             <form action="" method="post" class="form-horizontal">
@@ -201,7 +225,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12">
+                                                <div class="col-lg-12">
                                                     <div class="card">
                                                         <div class="card-body text-white bg-primary">
                                                             <strong class="card-title text-light">All Listed Applications here</strong>
@@ -221,7 +245,7 @@
                                                                         <td>Row 1 Data 1</td>
                                                                         <td>Row 1 Data 2</td>
                                                                         <td>Row 1 Data 2</td>
-                                                                        <td><button type="button" class="btn btn-warning"><i class="far fa-question-circle"></i>&nbsp&nbspRequest Access</button></td>
+                                                                        <td><button type="button" class="btn btn-warning req"><i class="far fa-question-circle"></i>&nbsp&nbspRequest Access</button></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Row 2 Data 1</td>
@@ -239,8 +263,8 @@
                                                 <!--Add Test case-->
                                                 <div class="col-lg-12">
                                                     <div class="card">
-                                                        <div class="card-header">
-                                                            <strong>Add Test Case </strong> Single
+                                                        <div class="card-header bg-dark">
+                                                            <strong class="card-title text-light">Add Test Case Single </strong>
                                                         </div>
                                                         <div class="card-body card-block">
                                                             <form action="" method="post" class="form-horizontal">
@@ -279,7 +303,7 @@
                                                     </div>
                                                     <!--Drag and Drop-->
                                                     <div class="card">
-                                                        <div class="card-header bg-primary">
+                                                        <div class="card-header bg-dark">
                                                             <strong class="card-title text-light">Drag And Drop Application Name And Test Case(.xlsx format only) Multiple</strong>
                                                         </div>
                                                         <div class="card-body text-white bg-light">
@@ -293,10 +317,10 @@
                                                         </div>
                                                     </div>
                                                     <!--Explore Test cases-->
-                                                    <div class="col-md-12">
+                                                    <div class="col-lg-12">
                                                         <div class="card">
                                                             <div class="card-body text-white bg-dark">
-                                                                <strong class="card-title text-light">All Listed Applications here</strong>
+                                                                <strong class="card-title text-light">All listed Test Cases are here</strong>
                                                             </div>
                                                             <div class="card-header bg-light">
                                                                 <form class="form-header" action="" method="POST">
@@ -322,70 +346,21 @@
                                                                             <td>Row 1 Data 2</td>
                                                                             <td>Row 1 Data 2</td>
                                                                             <td>Row 1 Data 2</td>
-                                                                            <td><button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal"><i class="fas fa-edit"></i>&nbsp&nbsp Edit Test case</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#smallmodal"><i class="fas fa-trash-alt"></i>&nbsp&nbsp Delete Test Case</button></td>
+                                                                            <td><button type="button" id="edits" class="btn btn-secondary edits"><i class="fas fa-edit"></i>&nbsp&nbsp Edit Test case</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger dels"><i class="fas fa-trash-alt"></i>&nbsp&nbsp Delete Test Case</button></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Row 2 Data 1</td>
                                                                             <td>Row 2 Data 2</td>
                                                                             <td>Row 1 Data 2</td>
                                                                             <td>Row 1 Data 2</td>
-                                                                            <td><button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#mediumModal"><i class="fas fa-edit"></i>&nbsp&nbsp Edit Test case</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger mb-1" data-toggle="modal" data-target="#smallmodal"><i class="fas fa-trash-alt"></i>&nbsp&nbsp Delete Test Case</button></td>
+                                                                            <td><button type="button" id="edits" class="btn btn-info edits"><i class="fas fa-edit"></i>&nbsp&nbsp Edit Test case</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger dels"><i class="fas fa-trash-alt"></i>&nbsp&nbsp Delete Test Case</button></td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--Edit Modal-->
-                                                    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>
-                                                                        There are three species of zebras: the plains zebra, the mountain zebra and the Grévy's zebra. The plains zebra and the mountain
-                                                                        zebra belong to the subgenus Hippotigris, but Grévy's zebra is the sole species of subgenus Dolichohippus. The latter
-                                                                        resembles an ass, to which it is closely related, while the former two are more horse-like. All three belong to the
-                                                                        genus Equus, along with other living equids.
-                                                                    </p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn btn-primary">Confirm</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--Delete Modal-->
-                                                    <div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-sm" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="smallmodalLabel">Small Modal</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>
-                                                                        There are three species of zebras: the plains zebra, the mountain zebra and the Grévy's zebra. The plains zebra and the mountain
-                                                                        zebra belong to the subgenus Hippotigris, but Grévy's zebra is the sole species of subgenus Dolichohippus. The latter
-                                                                        resembles an ass, to which it is closely related, while the former two are more horse-like. All three belong to the
-                                                                        genus Equus, along with other living equids.
-                                                                    </p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn btn-primary">Confirm</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   
                                             </div>
                                         </div>
                                     </div>
